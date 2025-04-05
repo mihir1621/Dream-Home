@@ -8,27 +8,26 @@ import {
   faList, 
   faBook, 
   faBriefcase, 
-  faCalculator,  // Keep only one occurrence
+  faCalculator,
   faBookmark, 
   faComment, 
   faLock, 
   faPhoneAlt 
 } from "@fortawesome/free-solid-svg-icons";
 
-import AreaConverterModal from "@/components/AreaConverterModal"; // Added AreaConverterModal import
+import AreaConverterModal from "@/components/AreaConverterModal";
 
 export default function Navbar({ setIsLoginOpen }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
-  const [isAreaConverterOpen, setIsAreaConverterOpen] = useState(false); // New state for Area Converter Modal
-  const menuRef = useRef(null); // Reference for dropdown menu
+  const [isAreaConverterOpen, setIsAreaConverterOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const handleLoginClick = () => {
     setIsLoginOpen(true);
     setIsOpen(false); // Close mobile menu when login is clicked
   };
 
-  // ✅ Function to close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -44,9 +43,9 @@ export default function Navbar({ setIsLoginOpen }) {
   return (
     <>
       <nav className="fixed top-0 right-0 w-full bg-white shadow-lg z-50">
-        <div className=" flex  items-center p-4">
+        <div className="flex items-center justify-between p-4">
           {/* Brand Logo with Rotating Text */}
-          <div className="relative pr-10 w-[150px] flex-shrink-0">
+          <div className="relative pr-4 w-[150px] flex-shrink-0">
             <RotatingText
               texts={["Dream Home", "Your Home", "Ideal Home", "Eco Haven"]}
               mainClassName="text-xl font-bold text-gray-400 hover:text-gray-600 transition-colors duration-300 whitespace-nowrap"
@@ -62,7 +61,7 @@ export default function Navbar({ setIsLoginOpen }) {
           </div>
 
           {/* Desktop Menu - Centered */}
-          <div className="hidden md:flex gap-6 mx-auto ">
+          <div className="hidden md:flex gap-6 mx-auto">
             <button className="px-4 py-2 font-bold bg-blue-300 rounded-lg hover:text-gray-600 transition">
               Buyers
             </button>
@@ -77,8 +76,8 @@ export default function Navbar({ setIsLoginOpen }) {
             </button>
           </div>
 
-          {/* Desktop Dropdown Menu & Login Button */}
-          <div className="hidden md:flex ml-auto gap-2 items-center">
+          {/* Login Button and Desktop Dropdown (Right Side) */}
+          <div className="hidden md:flex gap-2 items-center">
             <button
               className="px-4 py-2 font-bold bg-blue-300 rounded-lg hover:text-gray-600 transition"
               onClick={handleLoginClick}
@@ -87,8 +86,7 @@ export default function Navbar({ setIsLoginOpen }) {
             </button>
 
             {/* ☰ Dropdown Button */}
-            <div className="relative " ref={menuRef}>
-              {/* Moves it to the right and attaches ref */}
+            <div className="relative" ref={menuRef}>
               <button
                 className="px-4 py-2 bg-gray-200 rounded-lg"
                 onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
@@ -96,12 +94,11 @@ export default function Navbar({ setIsLoginOpen }) {
                 ☰
               </button>
 
-              {/* ✅ Dropdown Menu (Closes on Hover or Click Outside) */}
-              {/* ✅ Desktop Dropdown Menu (Increased size to match mobile view) */}
+              {/* Desktop Dropdown Menu */}
               {isDesktopMenuOpen && (
                 <div
                   className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg py-4 w-40 md:w-60 lg:w-80"
-                  onMouseLeave={() => setIsDesktopMenuOpen(false)} // Close on hover out
+                  onMouseLeave={() => setIsDesktopMenuOpen(false)}
                 >
                   <button className="block px-6 py-3 w-full text-left font-bold text-black hover:bg-gray-100">
                     <FontAwesomeIcon icon={faUser} className="mr-2" />
@@ -111,13 +108,6 @@ export default function Navbar({ setIsLoginOpen }) {
                     <FontAwesomeIcon icon={faHandshake} className="mr-2" />
                     Seamless experience
                   </button>
-                  {/* <button
-      className="block px-6 py-3 w-full text-left font-bold text-black hover:bg-gray-100"
-      onClick={handleLoginClick}
-    >
-      <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
-      Login/Register with DreamHome
-    </button> */}
                   <button className="block px-6 py-3 w-full text-left font-bold text-black hover:bg-gray-100">
                     <FontAwesomeIcon icon={faList} className="mr-2" />
                     My Listing
@@ -136,7 +126,7 @@ export default function Navbar({ setIsLoginOpen }) {
                   </button>
                   <button
                     className="block px-6 py-3 w-full text-left font-bold text-black hover:bg-gray-100"
-                    onClick={() => setIsAreaConverterOpen(true)} // Assigned Area Converter
+                    onClick={() => setIsAreaConverterOpen(true)}
                   >
                     <FontAwesomeIcon icon={faCalculator} className="mr-2" />
                     Area Converter
@@ -158,7 +148,7 @@ export default function Navbar({ setIsLoginOpen }) {
                     Phone number privacy
                   </button>
                   <button
-                    className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full"
+                    className="px-6 py-3 bg-white text-black w-full text-left font-bold hover:bg-gray-100"
                     onClick={handleLoginClick}
                   >
                     <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
@@ -169,9 +159,9 @@ export default function Navbar({ setIsLoginOpen }) {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Moved to the right by using ml-auto */}
           <button
-            className="md:hidden px-4 py-2 bg-gray-200 rounded-lg p-4"
+            className="md:hidden bg-gray-200 rounded-lg p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             ☰
@@ -180,7 +170,7 @@ export default function Navbar({ setIsLoginOpen }) {
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="md:hidden bg-white shadow-md flex flex-col items-center gap-2 py-4 pl-4">
+          <div className="md:hidden bg-white shadow-md flex flex-col items-center gap-2 py-4">
             <button className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full">
               <FontAwesomeIcon icon={faUser} className="mr-2" />
               Hi Guest👋🏼
@@ -189,18 +179,11 @@ export default function Navbar({ setIsLoginOpen }) {
               <FontAwesomeIcon icon={faHandshake} className="mr-2" />
               Seamless experience
             </button>
-            {/* <button
-            className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full"
-            onClick={handleLoginClick}
-          >
-            <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
-            Login/Register with DreamHome
-          </button> */}
             <button className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full">
               <FontAwesomeIcon icon={faList} className="mr-2" />
               My Listing
             </button>
-            <button className="px-4 py-2 bg-white text-black text-blackrounded-lg font-bold text-left w-full">
+            <button className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full">
               <FontAwesomeIcon icon={faList} className="mr-2" />
               My Leads
             </button>
@@ -214,7 +197,7 @@ export default function Navbar({ setIsLoginOpen }) {
             </button>
             <button
               className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full"
-              onClick={() => setIsAreaConverterOpen(true)} // Assigned Area Converter
+              onClick={() => setIsAreaConverterOpen(true)}
             >
               <FontAwesomeIcon icon={faCalculator} className="mr-2" />
               Area Converter
