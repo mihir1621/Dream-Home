@@ -21,12 +21,12 @@ export default function Home() {
       <div className={`min-h-screen bg-gray-50 relative`}>
         {/* Navbar with Centered Login Button */}
         <nav className="fixed top-4 right-4 bg-gray-400 shadow-lg px-4 py-2 rounded-lg z-50">
-        <button
-        onClick={() => setIsLoginOpen(true)}
-        className="text-blue-600 hover:underline focus:outline-none"
-      >
-        Login
-      </button>
+          <button
+            onClick={() => setIsLoginOpen(true)}
+            className="text-blue-600 hover:underline focus:outline-none"
+          >
+            Login
+          </button>
         </nav>
 
         {/* Content Wrapper */}
@@ -139,10 +139,10 @@ export default function Home() {
                   </Link>
                 </p>
                 <div className="text-center">
-  <Link href="/" className="px-4 py-2 text-black hover:underline">
-    ← Back to Home
-  </Link>
-</div>
+                  <Link href="/" className="px-4 py-2 text-black hover:underline">
+                    ← Back to Home
+                  </Link>
+                </div>
               </form>
             </div>
           </div>
