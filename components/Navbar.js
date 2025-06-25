@@ -22,7 +22,8 @@ export default function Navbar({ setIsLoginOpen }) {
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isAreaConverterOpen, setIsAreaConverterOpen] = useState(false);
   const menuRef = useRef(null);
-
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
   const handleLoginClick = () => {
     setIsLoginOpen(true);
     setIsOpen(false); // Close mobile menu when login is clicked
@@ -69,7 +70,7 @@ export default function Navbar({ setIsLoginOpen }) {
               Owners
             </button>
             <button className="px-4 py-2 font-bold bg-blue-300 rounded-lg hover:text-gray-600 transition">
-              Coliving
+              Co-Living
             </button>
             <button className="px-4 py-2 font-bold bg-blue-300 rounded-lg hover:text-gray-600 transition">
               Tenants
@@ -88,7 +89,7 @@ export default function Navbar({ setIsLoginOpen }) {
             {/* ☰ Dropdown Button */}
             <div className="relative" ref={menuRef}>
               <button
-                className="px-4 py-2 bg-gray-200 rounded-lg"
+                className="px-4 py-2 bg-gray-300 rounded-lg"
                 onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
               >
                 ☰
@@ -147,6 +148,10 @@ export default function Navbar({ setIsLoginOpen }) {
                     <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
                     Phone number privacy
                   </button>
+                  <button className="block px-6 py-3 w-full text-left font-bold text-black hover:bg-gray-100">
+                    <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
+                    About Us
+                  </button>
                   <button
                     className="px-6 py-3 bg-white text-black w-full text-left font-bold hover:bg-gray-100"
                     onClick={handleLoginClick}
@@ -161,7 +166,7 @@ export default function Navbar({ setIsLoginOpen }) {
 
           {/* Mobile Menu Button - Moved to the right by using ml-auto */}
           <button
-            className="md:hidden bg-gray-200 rounded-lg p-2"
+            className="md:hidden bg-gray-300 rounded-lg p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             ☰
@@ -217,6 +222,10 @@ export default function Navbar({ setIsLoginOpen }) {
             <button className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full">
               <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
               Phone number privacy
+            </button>
+            <button className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full">
+              <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
+             About Us
             </button>
             <button
               className="px-4 py-2 bg-white text-black rounded-lg font-bold text-left w-full"

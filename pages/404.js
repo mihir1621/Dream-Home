@@ -16,7 +16,7 @@ export default function Custom404() {
 
       {/* 404 Error Message */}
       <div className="absolute bg-white/10 p-10 rounded-lg text-center text-white backdrop-blur-md shadow-lg">
-        <h1 className="text-6xl font-bold">404 Error</h1>
+        <h1 className="text-6xl font-bold">Page Not Found !</h1>
         <p className="text-xl mt-4">Oops! The page you're looking for doesn't exist.</p>
 
         {/* Go Back Home Button */}
